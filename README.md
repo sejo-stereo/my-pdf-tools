@@ -2,7 +2,7 @@
 
 Colección de herramientas para archivos PDF y otros.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://tottus-pdf-tools.streamlit.app/)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]([https://tottus-pdf-tools.streamlit.app/](https://ilovepdf-pero-no-bloqueado-josemelgarejo.streamlit.app/))
 
 ### How to run it on your own machine
 
