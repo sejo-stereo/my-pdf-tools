@@ -17,7 +17,7 @@ def render_img(pdf_stream,rotation):
     pix = page.get_pixmap(dpi=300)
     img_data = io.BytesIO(pix.tobytes("png"))
     img = Image.open(img_data)
-    rotated_img = img.rotate(rotation,expand=True)
+    rotated_img = img.rotate(rotation*-1,expand=True)
     doc.close()
     return rotated_img
 
@@ -31,7 +31,7 @@ def save_rotated_pdf(pdf_stream,rotation):
     doc.close()
     with open(rotated_pdf_name, "rb") as fp:
             btn = st.download_button(
-                label="Descargar PDF",
+                label="Descargar PDF con rotación",
                 data=fp,
                 file_name=rotated_pdf_name,
                 mime="application/pdf",
@@ -41,15 +41,18 @@ def save_rotated_pdf(pdf_stream,rotation):
 
 
 
-st.title("🎈 Rotar PDF")
-st.write(
-    "Carga tu archivo PDF y modifica la rotación."
-)
+st.title("📑 Rotar PDF")
+st.markdown("""
+    1.  Carga el archivo que quieres modificar.
+    2.  Se mostrará en imagen la primera página como referencia.
+    3.  Se mostrará un control deslizante para seleccionar el angulo de rotación. 
+    4.  Click en "Descargar PDF"..         
+""")
 
 uploaded_pdf= st.file_uploader(label="Cargar PDF",type=["pdf"],key="uploaded_pdf",accept_multiple_files=False)
 if uploaded_pdf:
     values = st.slider("Angulos",-180,180,value=0,step=90)
-    if st.button("Download"):
+    if st.button("Rotar PDF"):
         save_rotated_pdf(uploaded_pdf,values)
 if uploaded_pdf:
     st.image(render_img(uploaded_pdf,values),use_container_width =True)

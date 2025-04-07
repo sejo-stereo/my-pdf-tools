@@ -9,10 +9,13 @@ import streamlit_pdf_viewer as pdf_viewer
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-st.title("📸 Convertir Imagen a PDF")
-st.write(
-    "Carga tu archivo y convierte a PDF."
-)
+st.title("📑 Imagen a PDF")
+st.markdown("""
+    1.  Carga el archivo que quieres convertir.
+    2.  Se mostrará en imagen la primera página como referencia.
+    3.  Se mostrará un control deslizante para seleccionar el angulo de rotación. 
+    4.  Click en "Descargar PDF"..         
+""")
 
 img_uploaded = st.file_uploader(label="Cargar",type=["tif","png","jpg"],accept_multiple_files=False)
 
